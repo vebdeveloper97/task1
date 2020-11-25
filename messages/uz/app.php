@@ -56,7 +56,7 @@ return [
     'Profile' => 'Shaxsiy profile',
     'Reset' => 'Yangilash',
     'Rule Name' => '',
-    'Save' => 'Rule nomi',
+    'Save' => 'Saqlash',
     'Search' => 'Qidirish',
     'Select Child' => 'Bola tanlash',
     'Select Parent' => 'Ota ona tanlash',

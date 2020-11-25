@@ -27,8 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'item_name',
-            'user_id',
-            'created_at',
+            [
+               'attribute' => 'user_id',
+               'value' => function($model){
+                    $hr = \app\models\HrEmployee::findOne(['user_id' => $model->user_id]);
+                    $user = \app\models\User::findOne($model->user_id);
+                    return $hr->fish.'( ' . $user->username . ' )';
+               }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

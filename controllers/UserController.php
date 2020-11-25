@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\AuthAssignment;
 use app\models\HrEmployee;
 use app\models\HrEmployeeSearch;
 use Yii;
@@ -158,6 +159,15 @@ class UserController extends AuthController
     public function actionDelete($id)
     {
         $hr = HrEmployee::findOne($id);
+        $role = AuthAssignment::find()
+            ->where(['user_id' => $hr->user_id])
+            ->all();
+
+        if(!empty($role)){
+            foreach ($role as $item) {
+                $item->delete();
+            }
+        }
         $this->findModel($hr->user_id)->delete();
         $hr->delete();
 

@@ -27,7 +27,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'name',
-            'type',
+            [
+                'attribute' => 'type',
+                'value' => function($model){
+                    $str = '';
+                    if($model->type == 1) $str = 'Admin';
+                    elseif($model->type == 2) $str = Yii::t('app', 'Agent');
+                    return $str;
+                }
+            ],
             'description:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -4,11 +4,12 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use yii\helpers\VarDumper;
 
 /**
  * LoginForm is the model behind the login form.
  *
- * @property-read User|null $user This property is read-only.
+ * @property-read User1|null $user This property is read-only.
  *
  */
 class LoginForm extends Model
@@ -48,7 +49,7 @@ class LoginForm extends Model
             $user = $this->getUser();
 
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, Yii::t('app', 'Login yoki Parol xato!'));
             }
         }
     }

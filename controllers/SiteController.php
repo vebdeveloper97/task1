@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -10,7 +11,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-class SiteController extends Controller
+class SiteController extends AuthController
 {
     /**
      * {@inheritdoc}
@@ -98,5 +99,23 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionSettings()
+    {
+        $model = new User();
+
+        return $this->render('settings', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionUsers()
+    {
+        $model = new User();
+
+        return $this->render('users', [
+           'model' => $model
+        ]);
     }
 }
